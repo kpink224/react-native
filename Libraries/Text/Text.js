@@ -47,6 +47,15 @@ const viewConfig = {
   uiViewClassName: 'RCTText',
 };
 
+const DataDetectorTypes = [
+  'phoneNumber',
+  'link',
+  'address',
+  'calendarEvent',
+  'none',
+  'all',
+];
+
 import type {ViewChildContext} from 'ViewContext';
 
 /**
@@ -407,12 +416,32 @@ const Text = createReactClass({
      * @platform android
      */
     disabled: PropTypes.bool,
+    /**
+     * Determines the types of data converted to clickable URLs in the text input.
+     * Only valid if `multiline={true}` and `editable={false}`.
+     * By default no data types are detected.
+     *
+     * You can provide one type or an array of many types.
+     *
+     * Possible values for `dataDetectorTypes` are:
+     *
+     * - `'phoneNumber'`
+     * - `'link'`
+     * - `'address'`
+     * - `'calendarEvent'`
+     * - `'none'`
+     * - `'all'`
+     *
+     * @platform ios
+     */
+    dataDetectorTypes: PropTypes.oneOf(DataDetectorTypes)
   },
   getDefaultProps(): Object {
     return {
       accessible: true,
       allowFontScaling: true,
       ellipsizeMode: 'tail',
+      dataDetectorTypes: 'all'
     };
   },
   getInitialState: function(): Object {

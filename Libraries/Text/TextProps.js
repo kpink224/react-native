@@ -45,6 +45,7 @@ export type TextProps = {|
 
   // Android Only
   disabled?: boolean,
+  dataDetectorTypes?: 'phoneNumber' | 'link' | 'address' | 'calendarEvent' | 'none' | 'all',
   selectionColor?: string,
   textBreakStrategy?: 'balanced' | 'highQuality' | 'simple',
 
